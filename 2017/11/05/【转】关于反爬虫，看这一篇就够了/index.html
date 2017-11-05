@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>【转】关于反爬虫，看这一篇就够了 | 岳金钊のBlog</title><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.2"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1b752e2147d2240dd4673e3de5a1c660";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var GLOBAL = { 
+  root: '/',
+  algolia: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><link rel="icon" href="/favicon.ico"></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要反爬虫"><span class="toc-number">1.</span> <span class="toc-text">为什么要反爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫占总PV比例较高，这样浪费钱（尤其是三月份爬虫）。"><span class="toc-number">1.1.</span> <span class="toc-text">爬虫占总PV比例较高，这样浪费钱（尤其是三月份爬虫）。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公司可免费查询的资源被批量抓走，丧失竞争力，这样少赚钱。"><span class="toc-number">1.2.</span> <span class="toc-text">公司可免费查询的资源被批量抓走，丧失竞争力，这样少赚钱。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爬虫是否涉嫌违法？-如果是的话，是否可以起诉要求赔偿？这样可以赚钱。"><span class="toc-number">1.3.</span> <span class="toc-text">爬虫是否涉嫌违法？ 如果是的话，是否可以起诉要求赔偿？这样可以赚钱。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反什么样的爬虫"><span class="toc-number">2.</span> <span class="toc-text">反什么样的爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#十分低级的应届毕业生"><span class="toc-number">2.1.</span> <span class="toc-text">十分低级的应届毕业生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#十分低级的创业小公司"><span class="toc-number">2.2.</span> <span class="toc-text">十分低级的创业小公司</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不小心写错了没人去停止的失控小爬虫"><span class="toc-number">2.3.</span> <span class="toc-text">不小心写错了没人去停止的失控小爬虫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成型的商业对手"><span class="toc-number">2.4.</span> <span class="toc-text">成型的商业对手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽风的搜索引擎"><span class="toc-number">2.5.</span> <span class="toc-text">抽风的搜索引擎</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是爬虫和反爬虫"><span class="toc-number">3.</span> <span class="toc-text">什么是爬虫和反爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知己知彼：如何编写简单爬虫"><span class="toc-number">4.</span> <span class="toc-text">知己知彼：如何编写简单爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知己知彼：如何编写高级爬虫"><span class="toc-number">5.</span> <span class="toc-text">知己知彼：如何编写高级爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式"><span class="toc-number">5.1.</span> <span class="toc-text">分布式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟JavaScript"><span class="toc-number">5.2.</span> <span class="toc-text">模拟JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PhantomJs"><span class="toc-number">5.3.</span> <span class="toc-text">PhantomJs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同级别爬虫的优缺点"><span class="toc-number">6.</span> <span class="toc-text">不同级别爬虫的优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何设计一个反爬虫系统-常规架构"><span class="toc-number">7.</span> <span class="toc-text">如何设计一个反爬虫系统(常规架构)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统反爬虫手段"><span class="toc-number">7.1.</span> <span class="toc-text">传统反爬虫手段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#后台对访问进行统计，如果单个IP访问超过阈值，予以封锁。"><span class="toc-number">7.1.1.</span> <span class="toc-text">后台对访问进行统计，如果单个IP访问超过阈值，予以封锁。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台对访问进行统计，如果单个session访问超过阈值，予以封锁。"><span class="toc-number">7.1.2.</span> <span class="toc-text">后台对访问进行统计，如果单个session访问超过阈值，予以封锁。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台对访问进行统计，如果单个userAgent访问超过阈值，予以封锁。"><span class="toc-number">7.1.3.</span> <span class="toc-text">后台对访问进行统计，如果单个userAgent访问超过阈值，予以封锁。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以上的组合"><span class="toc-number">7.1.4.</span> <span class="toc-text">以上的组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#到此为止。"><span class="toc-number">7.1.5.</span> <span class="toc-text">到此为止。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、我抓到你了——然后该怎么办"><span class="toc-number">8.</span> <span class="toc-text">八、我抓到你了——然后该怎么办</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#技术压制"><span class="toc-number">8.1.</span> <span class="toc-text">技术压制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#心理战"><span class="toc-number">8.2.</span> <span class="toc-text">心理战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#放水"><span class="toc-number">8.3.</span> <span class="toc-text">放水</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="http://oybgvq7fu.bkt.clouddn.com/logo.jpg"></div><div class="author-info__name text-center">岳金钊</div><div class="author-info__description text-center">程序员 | 知识爱好者 | 自由生活向往者</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">4</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">3</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">2</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://www.zhihu.com/people/honyelchak/" target="_blank">知乎</a><a class="author-info-links__name text-center" target="_blank">微信订阅号：岳万三</a><a class="author-info-links__name text-center" target="_blank">QQ：554417388</a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container" style="background-image: url(true);"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">岳金钊のBlog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span></div><div id="post-info"><div id="post-title">【转】关于反爬虫，看这一篇就够了</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-11-05 </time><span class="post-meta__separator"> | </span><i class="fa fa-inbox" aria-hidden="true"> </i><a class="post-meta__categories" href="/categories/爬虫/"> 爬虫  </a></div></div></div><div class="layout" id="content-inner"><article id="post"><div id="post-content"><p>你被爬虫侵扰过么？当你看到“爬虫”两个字的时候，是不是已经有点血脉贲张的感觉了？千万要忍耐，稍稍做点什么，就可以在名义上让他们胜利，实际上让他们受损失。</p>
+<h2 id="为什么要反爬虫"><a href="#为什么要反爬虫" class="headerlink" title="为什么要反爬虫"></a>为什么要反爬虫</h2><h3 id="爬虫占总PV比例较高，这样浪费钱（尤其是三月份爬虫）。"><a href="#爬虫占总PV比例较高，这样浪费钱（尤其是三月份爬虫）。" class="headerlink" title="爬虫占总PV比例较高，这样浪费钱（尤其是三月份爬虫）。"></a>爬虫占总PV比例较高，这样浪费钱（尤其是三月份爬虫）。</h3><p>三月份爬虫是个什么概念呢？每年的三月份我们会迎接一次爬虫高峰期。</p>
+<p>最初我们百思不得其解。直到有一次，四月份的时候，我们删除了一个url，然后有个爬虫不断的爬取url，导致大量报错，测试开始找我们麻烦。我们只好特意为这个爬虫发布了一次站点，把删除的url又恢复回去了。</p>
+<p>但是当时我们的一个组员表示很不服，说，我们不能干掉爬虫，也就罢了，还要专门为它发布，这实在是太没面子了。于是出了个主意，说：url可以上，但是，绝对不给真实数据。</p>
+<p>于是我们就把一个静态文件发布上去了。报错停止了，爬虫没有停止，也就是说对方并不知道东西都是假的。这个事情给了我们一个很大的启示，也直接成了我们反爬虫技术的核心：变更。</p>
+<p>后来有个学生来申请实习。我们看了简历发现她爬过携程。后来面试的时候确认了下，果然她就是四月份害我们发布的那个家伙。不过因为是个妹子，技术也不错，后来就被我们招安了。现在已经快正式入职了。</p>
+<p>后来我们一起讨论的时候，她提到了，有大量的硕士在写论文的时候会选择爬取OTA数据，并进行舆情分析。因为五月份交论文，所以嘛，大家都是读过书的，你们懂的，前期各种DotA，LOL，到了三月份了，来不及了，赶紧抓数据，四月份分析一下，五月份交论文。</p>
+<p>就是这么个节奏。</p>
+<h3 id="公司可免费查询的资源被批量抓走，丧失竞争力，这样少赚钱。"><a href="#公司可免费查询的资源被批量抓走，丧失竞争力，这样少赚钱。" class="headerlink" title="公司可免费查询的资源被批量抓走，丧失竞争力，这样少赚钱。"></a>公司可免费查询的资源被批量抓走，丧失竞争力，这样少赚钱。</h3><p>OTA的价格可以在非登录状态下直接被查询，这个是底线。如果强制登陆，那么可以通过封杀账号的方式让对方付出代价，这也是很多网站的做法。但是我们不能强制对方登录。那么如果没有反爬虫，对方就可以批量复制我们的信息，我们的竞争力就会大大减少。</p>
+<p>竞争对手可以抓到我们的价格，时间长了用户就会知道，只需要去竞争对手那里就可以了，没必要来携程。这对我们是不利的。</p>
+<h3 id="爬虫是否涉嫌违法？-如果是的话，是否可以起诉要求赔偿？这样可以赚钱。"><a href="#爬虫是否涉嫌违法？-如果是的话，是否可以起诉要求赔偿？这样可以赚钱。" class="headerlink" title="爬虫是否涉嫌违法？ 如果是的话，是否可以起诉要求赔偿？这样可以赚钱。"></a>爬虫是否涉嫌违法？ 如果是的话，是否可以起诉要求赔偿？这样可以赚钱。</h3><p>这个问题我特意咨询了法务，最后发现这在国内还是个擦边球，就是有可能可以起诉成功，也可能完全无效。所以还是需要用技术手段来做最后的保障。</p>
+<h2 id="反什么样的爬虫"><a href="#反什么样的爬虫" class="headerlink" title="反什么样的爬虫"></a>反什么样的爬虫</h2><h3 id="十分低级的应届毕业生"><a href="#十分低级的应届毕业生" class="headerlink" title="十分低级的应届毕业生"></a>十分低级的应届毕业生</h3><p>开头我们提到的三月份爬虫，就是一个十分明显的例子。应届毕业生的爬虫通常简单粗暴，根本不管服务器压力，加上人数不可预测，很容易把站点弄挂。</p>
+<p>顺便说下，通过爬携程来获取offer这条路已经行不通了。因为我们都知道，第一个说漂亮女人像花的人，是天才。而第二个。。。你们懂的吧？</p>
+<h3 id="十分低级的创业小公司"><a href="#十分低级的创业小公司" class="headerlink" title="十分低级的创业小公司"></a>十分低级的创业小公司</h3><p>现在的创业公司越来越多，也不知道是被谁忽悠的然后大家创业了发现不知道干什么好，觉得大数据比较热，就开始做大数据。</p>
+<p>分析程序全写差不多了，发现自己手头没有数据。</p>
+<p>怎么办？写爬虫爬啊。于是就有了不计其数的小爬虫，出于公司生死存亡的考虑，不断爬取数据。</p>
+<h3 id="不小心写错了没人去停止的失控小爬虫"><a href="#不小心写错了没人去停止的失控小爬虫" class="headerlink" title="不小心写错了没人去停止的失控小爬虫"></a>不小心写错了没人去停止的失控小爬虫</h3><p>携程上的点评有的时候可能高达60%的访问量是爬虫。我们已经选择直接封锁了，它们依然孜孜不倦地爬取。</p>
+<p>什么意思呢？就是说，他们根本爬不到任何数据，除了http code是200以外，一切都是不对的，可是爬虫依然不停止这个很可能就是一些托管在某些服务器上的小爬虫，已经无人认领了，依然在辛勤地工作着。</p>
+<h3 id="成型的商业对手"><a href="#成型的商业对手" class="headerlink" title="成型的商业对手"></a>成型的商业对手</h3><p>这个是最大的对手，他们有技术，有钱，要什么有什么，如果和你死磕，你就只能硬着头皮和他死磕。</p>
+<h3 id="抽风的搜索引擎"><a href="#抽风的搜索引擎" class="headerlink" title="抽风的搜索引擎"></a>抽风的搜索引擎</h3><p>大家不要以为搜索引擎都是好人，他们也有抽风的时候，而且一抽风就会导致服务器性能下降，请求量跟网络攻击没什么区别。</p>
+<h2 id="什么是爬虫和反爬虫"><a href="#什么是爬虫和反爬虫" class="headerlink" title="什么是爬虫和反爬虫"></a>什么是爬虫和反爬虫</h2><p>因为反爬虫暂时是个较新的领域，因此有些定义要自己下。我们内部定义是这样的：</p>
+<ul>
+<li>爬虫：使用任何技术手段，批量获取网站信息的一种方式。关键在于批量。 </li>
+<li>反爬虫：使用任何技术手段，阻止别人批量获取自己网站信息的一种方式。关键也在于批量。 </li>
+<li>误伤：在反爬虫的过程中，错误的将普通用户识别为爬虫。误伤率高的反爬虫策略，效果再好也不能用。 </li>
+<li>拦截：成功地阻止爬虫访问。这里会有拦截率的概念。通常来说，拦截率越高的反爬虫策略，误伤的可能性就越高。因此需要做个权衡。 </li>
+<li>资源：机器成本与人力成本的总和。 </li>
+</ul>
+<p>这里要切记，人力成本也是资源，而且比机器更重要。因为，根据摩尔定律，机器越来越便宜。而根据IT行业的发展趋势，程序员工资越来越贵。因此，让对方加班才是王道，机器成本并不是特别值钱。</p>
+<h2 id="知己知彼：如何编写简单爬虫"><a href="#知己知彼：如何编写简单爬虫" class="headerlink" title="知己知彼：如何编写简单爬虫"></a>知己知彼：如何编写简单爬虫</h2><p>要想做反爬虫，我们首先需要知道如何写个简单的爬虫。</p>
+<p>目前网络上搜索到的爬虫资料十分有限，通常都只是给一段python代码。python是一门很好的语言，但是用来针对有反爬虫措施的站点做爬虫，真的不是最优选择。</p>
+<p>更讽刺的是，通常搜到的python爬虫代码都会使用一个lynx的user-agent。你们应该怎么处理这个user-agent，就不用我来说了吧？</p>
+<p>通常编写爬虫需要经过这么几个过程：</p>
+<ul>
+<li>分析页面请求格式 </li>
+<li>创建合适的http请求 </li>
+<li>批量发送http请求，获取数据 </li>
+</ul>
+<p>举个例子，直接查看携程生产url。在详情页点击“确定”按钮，会加载价格。假设价格是你想要的，那么抓出网络请求之后，哪个请求才是你想要的结果呢？</p>
+<p>答案出乎意料的简单，你只需要用根据网络传输数据量进行倒序排列即可。因为其他的迷惑性的url再多再复杂，开发人员也不会舍得加数据量给他。</p>
+<h2 id="知己知彼：如何编写高级爬虫"><a href="#知己知彼：如何编写高级爬虫" class="headerlink" title="知己知彼：如何编写高级爬虫"></a>知己知彼：如何编写高级爬虫</h2><p>那么爬虫进阶应该如何做呢？通常所谓的进阶有以下几种：</p>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><p>通常会有一些教材告诉你，为了爬取效率，需要把爬虫分布式部署到多台机器上。这完全是骗人的。分布式唯一的作用是：防止对方封IP。封IP是终极手段，效果非常好，当然，误伤起用户也是非常爽的。</p>
+<h3 id="模拟JavaScript"><a href="#模拟JavaScript" class="headerlink" title="模拟JavaScript"></a>模拟JavaScript</h3><p>有些教程会说，模拟javascript，抓取动态网页，是进阶技巧。但是其实这只是个很简单的功能。因为，如果对方没有反爬虫，你完全可以直接抓ajax本身，而无需关心js怎么处理的。如果对方有反爬虫，那么javascript必然十分复杂，重点在于分析，而不仅仅是简单的模拟。</p>
+<p>换句话说：这应该是基本功。</p>
+<h3 id="PhantomJs"><a href="#PhantomJs" class="headerlink" title="PhantomJs"></a>PhantomJs</h3><p>这个是一个极端的例子。这个东西本意是用来做自动测试的，结果因为效果很好，很多人拿来做爬虫。但是这个东西有个硬伤，就是：效率。此外PhantomJs也是可以被抓到的，出于多方面原因，这里暂时不讲。　</p>
+<h2 id="不同级别爬虫的优缺点"><a href="#不同级别爬虫的优缺点" class="headerlink" title="不同级别爬虫的优缺点"></a>不同级别爬虫的优缺点</h2><p>越是低级的爬虫，越容易被封锁，但是性能好，成本低。越是高级的爬虫，越难被封锁，但是性能低，成本也越高。</p>
+<p>当成本高到一定程度，我们就可以无需再对爬虫进行封锁。经济学上有个词叫边际效应。付出成本高到一定程度，收益就不是很多了。</p>
+<p>那么如果对双方资源进行对比，我们就会发现，无条件跟对方死磕，是不划算的。应该有个黄金点，超过这个点，那就让它爬好了。毕竟我们反爬虫不是为了面子，而是为了商业因素。</p>
+<h2 id="如何设计一个反爬虫系统-常规架构"><a href="#如何设计一个反爬虫系统-常规架构" class="headerlink" title="如何设计一个反爬虫系统(常规架构)"></a>如何设计一个反爬虫系统(常规架构)</h2><p>有个朋友曾经给过我这样一个架构：</p>
+<ul>
+<li>对请求进行预处理，便于识别； </li>
+<li>识别是否是爬虫； </li>
+<li>针对识别结果，进行适当的处理；</li>
+</ul>
+<p>当时我觉得，听起来似乎很有道理，不愧是架构，想法就是和我们不一样。后来我们真正做起来反应过来不对了。因为：</p>
+<p>如果能识别出爬虫，哪还有那么多废话？想怎么搞它就怎么搞它。如果识别不出来爬虫，你对谁做适当处理？</p>
+<p>三句话里面有两句是废话，只有一句有用的，而且还没给出具体实施方式。那么：这种架构(师)有什么用？</p>
+<p>因为当前存在一个架构师崇拜问题，所以很多创业小公司以架构师名义招开发。给出的title都是：初级架构师，架构师本身就是个高级岗位，为什么会有初级架构。这就相当于：初级将军/初级司令。</p>
+<p>最后去了公司，发现十个人，一个CTO，九个架构师，而且可能你自己是初级架构师，其他人还是高级架构师。不过初级架构师还不算坑爹了，有些小创业公司还招CTO做开发呢。</p>
+<h3 id="传统反爬虫手段"><a href="#传统反爬虫手段" class="headerlink" title="传统反爬虫手段"></a>传统反爬虫手段</h3><h4 id="后台对访问进行统计，如果单个IP访问超过阈值，予以封锁。"><a href="#后台对访问进行统计，如果单个IP访问超过阈值，予以封锁。" class="headerlink" title="后台对访问进行统计，如果单个IP访问超过阈值，予以封锁。"></a>后台对访问进行统计，如果单个IP访问超过阈值，予以封锁。</h4><p>这个虽然效果还不错，但是其实有两个缺陷，一个是非常容易误伤普通用户，另一个就是，IP其实不值钱，几十块钱甚至有可能买到几十万个IP。所以总体来说是比较亏的。不过针对三月份呢爬虫，这点还是非常有用的。</p>
+<h4 id="后台对访问进行统计，如果单个session访问超过阈值，予以封锁。"><a href="#后台对访问进行统计，如果单个session访问超过阈值，予以封锁。" class="headerlink" title="后台对访问进行统计，如果单个session访问超过阈值，予以封锁。"></a>后台对访问进行统计，如果单个session访问超过阈值，予以封锁。</h4><p>这个看起来更高级了一些，但是其实效果更差，因为session完全不值钱，重新申请一个就可以了。</p>
+<h4 id="后台对访问进行统计，如果单个userAgent访问超过阈值，予以封锁。"><a href="#后台对访问进行统计，如果单个userAgent访问超过阈值，予以封锁。" class="headerlink" title="后台对访问进行统计，如果单个userAgent访问超过阈值，予以封锁。"></a>后台对访问进行统计，如果单个userAgent访问超过阈值，予以封锁。</h4><p>这个是大招，类似于抗生素之类的，效果出奇的好，但是杀伤力过大，误伤非常严重，使用的时候要非常小心。至今为止我们也就只短暂封杀过mac下的火狐。</p>
+<h4 id="以上的组合"><a href="#以上的组合" class="headerlink" title="以上的组合"></a>以上的组合</h4><p>组合起来能力变大，误伤率下降，在遇到低级爬虫的时候，还是比较好用的。</p>
+<p>由以上我们可以看出，其实爬虫反爬虫是个游戏，RMB玩家才最牛逼。因为上面提到的方法，效果均一般，所以还是用JavaScript比较靠谱。</p>
+<p>也许有人会说：javascript做的话，不是可以跳掉前端逻辑，直接拉服务吗？怎么会靠谱呢？因为啊，我是一个标题党啊。JavaScript不仅仅是做前端。跳过前端不等于跳过JavaScript。也就是说：我们的服务器是nodejs做的。</p>
+<blockquote>
+<p>思考题：我们写代码的时候，最怕碰到什么代码？什么代码不好调试？ </p>
+</blockquote>
+<p><strong>eval</strong></p>
+<p>eval已经臭名昭著了，它效率低下，可读性糟糕。正是我们所需要的。</p>
+<p><strong>goto</strong></p>
+<p>js对goto支持并不好，因此需要自己实现goto。</p>
+<p><strong>混淆</strong></p>
+<p>目前的minify工具通常是minify成abcd之类简单的名字，这不符合我们的要求。我们可以minify成更好用的，比如阿拉伯语。为什么呢？ 因为阿拉伯语有的时候是从左向右写，有的时候是从右向左写，还有的时候是从下向上写。除非对方雇个阿拉伯程序员，否则非头疼死不可。</p>
+<p><strong>不稳定代码</strong></p>
+<p>什么bug不容易修？不容易重现的bug不好修。因此，我们的代码要充满不确定性，每次都不一样。</p>
+<p>代码演示</p>
+<p>下载代码本身，可以更容易理解。这里简短介绍下思路：</p>
+<ul>
+<li>纯JAVASCRIPT反爬虫DEMO，通过更改连接地址，来让对方抓取到错误价格。这种方法简单，但是如果对方针对性的来查看，十分容易被发现。 </li>
+<li>纯JAVASCRIPT反爬虫DEMO，更改key。这种做法简单，不容易被发现。但是可以通过有意爬取错误价格的方式来实现。 </li>
+<li>纯JAVASCRIPT反爬虫DEMO，更改动态key。这种方法可以让更改key的代价变为0，因此代价更低。 </li>
+<li>纯JAVASCRIPT反爬虫DEMO，十分复杂的更改key。这种方法，可以让对方很难分析，如果加了后续提到的浏览器检测，更难被爬取。 </li>
+</ul>
+<h4 id="到此为止。"><a href="#到此为止。" class="headerlink" title="到此为止。"></a>到此为止。</h4><p>前面我们提到了边际效应，就是说，可以到此为止了。后续再投入人力就得不偿失了。除非有专门的对手与你死磕。不过这个时候就是为了尊严而战，不是为了商业因素了。</p>
+<p><strong>浏览器检测</strong></p>
+<p>针对不同的浏览器，我们的检测方式是不一样的。</p>
+<p>IE 检测bug；<br>FF 检测对标准的严格程度；<br>Chrome 检测强大特性。 </p>
+<h2 id="八、我抓到你了——然后该怎么办"><a href="#八、我抓到你了——然后该怎么办" class="headerlink" title="八、我抓到你了——然后该怎么办"></a>八、我抓到你了——然后该怎么办</h2><p>不会引发生产事件——直接拦截</p>
+<p>可能引发生产事件——给假数据(也叫投毒)</p>
+<p>此外还有一些发散性的思路。例如是不是可以在响应里做SQL注入？毕竟是对方先动的手。不过这个问题法务没有给具体回复，也不容易和她解释。因此暂时只是设想而已。</p>
+<h3 id="技术压制"><a href="#技术压制" class="headerlink" title="技术压制"></a>技术压制</h3><p>我们都知道，DotA AI里有个de命令，当AI被击杀后，它获取经验的倍数会提升。因此，前期杀AI太多，AI会一身神装，无法击杀。</p>
+<p>正确的做法是，压制对方等级，但是不击杀。反爬虫也是一样的，不要一开始就搞太过分，逼人家和你死磕。</p>
+<h3 id="心理战"><a href="#心理战" class="headerlink" title="心理战"></a>心理战</h3><p>挑衅、怜悯、嘲讽、猥琐。</p>
+<p>以上略过不提，大家领会精神即可。</p>
+<h3 id="放水"><a href="#放水" class="headerlink" title="放水"></a>放水</h3><p>这个可能是是最高境界了。</p>
+<p>程序员都不容易，做爬虫的尤其不容易。可怜可怜他们给他们一小口饭吃吧。没准过几天你就因为反爬虫做得好，改行做爬虫了。</p>
+<p>比如，前一阵子就有人找我问我会不会做爬虫。。。。。我这么善良的人，能说不会吗？？？？</p>
+<p>原文来自segementfault：<a href="&#39;https://segmentfault.com/a/1190000005840672&#39;">关于反爬虫，看这一篇就够了! </a></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info">岳金钊</span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info">http://honyelchak.github.io/2017/11/05/【转】关于反爬虫，看这一篇就够了/</span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/爬虫-Python/">爬虫,Python</a></div></article><nav id="pagination"><div class="next-post pull-right"><a href="/2017/10/25/我为什么要夜晚骑行去财大听分享会/"><span>夜晚骑行去财大听分享会，我得到了什么？</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">©2017 - 2017 By 岳金钊</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span> |  </span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.2"></script><script src="/js/fancybox.js?version=1.2"></script><script src="/js/sidebar.js?version=1.2"></script><script src="/js/copy.js?version=1.2"></script><script src="/js/fireworks.js?version=1.2"></script><script src="/js/transition.js?version=1.2"></script><script src="/js/scroll.js?version=1.2"></script><script src="/js/head.js?version=1.2"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></body></html>
