@@ -135,7 +135,7 @@ pre,
   overflow: auto;
   margin: 1rem 0;
   padding: 0;
-  background: #212121;
+  background: #263238;
   color: #eff;
   font-size: 14px;
   line-height: 20px;
@@ -208,15 +208,15 @@ pre code {
 .highlight .gutter pre {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
-  background-color: #212121;
-  color: #424242;
+  background-color: #263238;
+  color: #37474f;
   text-align: right;
 }
 .highlight .code pre {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   width: 100%;
-  background-color: #212121;
+  background-color: #263238;
 }
 .highlight .line {
   height: 1rem;
@@ -246,7 +246,7 @@ pre .meta {
   color: #c792ea;
 }
 pre .comment {
-  color: #4a4a4a;
+  color: #546e7a;
 }
 pre .variable,
 pre .attribute,
@@ -990,7 +990,7 @@ img:hover {
   position: absolute;
   top: 6px;
   right: 0;
-  background: #212121;
+  background: #263238;
   color: #89ddff;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
