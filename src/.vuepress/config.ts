@@ -26,11 +26,11 @@ export default defineUserConfig({
         },
       ],
     }),
-    shikiPlugin({
-      // 你的选项
-      theme: "one-dark-pro",
-      // langs: ["c++", "java", "javascript", "html", "yaml", "yml", "c", "bat", "bash", "shell", "css", "javascript"]
-    }),
+    // shikiPlugin({
+    //   // 你的选项
+    //   theme: "one-dark-pro",
+    //   // langs: ["c++", "java", "javascript", "html", "yaml", "yml", "c", "bat", "bash", "shell", "css", "javascript"]
+    // }),
   ], 
   // Enable it with pwa
   shouldPrefetch: true,
