@@ -306,13 +306,13 @@ public String useRequestParam(@RequestParam("name")String username,       @Reque
 
 ### @RequestHeader
 
-![image-20200303185431951](D:\Users\Desktop\文本\A-面试准备\SpringMVC.assets\image-20200303185431951.png)
+![image-20200303185431951](.SpringMVC.assets\image-20200303185431951.png)
 
 
 
 ### @CookieValue
 
-![image-20200303185507298](D:\Users\Desktop\文本\A-面试准备\SpringMVC.assets\image-20200303185507298.png)
+![image-20200303185507298](.SpringMVC.assets\image-20200303185507298.png)
 
 ### @ModelAttribute
 

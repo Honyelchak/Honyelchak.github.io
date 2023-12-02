@@ -965,7 +965,7 @@ Spring扫描底层流程：https://www.processon.com/view/link/61370ee60e3e7412e
 6. 再基于metadataReader判断对应的类是不是接口或抽象类、是不是加有@Lookup的抽象类
 7. 如果筛选通过，那么就表示扫描到了一个Bean，将ScannedGenericBeanDefinition加入结果集
 
-   <img src=".手写一个Spring框架.assets/image-20230503210953151.png" alt="image-20230503210953151" style="zoom:67%;" />
+   ![image-20230503210953151](.手写一个Spring框架.assets/image-20230503210953151.png)
 8. 前边筛选并生成的BeanDefinition只有BeanClass，接下来遍历所有的BeanDefinition
 9. 调用`AnnotationBeanNameGenerator`生成beanName
 10. 给BeanDefinition对象中的属性赋默认值

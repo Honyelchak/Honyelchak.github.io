@@ -134,7 +134,7 @@
             <td>n个字节</td>     
             <td>attributes_count</td>
         </tr>	
-   <tbody> 
+   </tbody> 
 </table>
 
 
@@ -967,7 +967,7 @@ public void load(int num, Object obj, long count, boolean flag, short[] arr) {
             <td>ldc</td>
             <td>String literal, Class literal</td>
        </tr>
-   <tbody> 
+   </tbody> 
 </table>
 
 
@@ -1249,7 +1249,7 @@ public void load(int num, Object obj, long count, boolean flag, short[] arr) {
             <td>fcmpg / fcmpl</td>
             <td>dcmpg / dcmpl</td>
        </tr> 
-   <tbody> 
+   </tbody> 
 </table>
 
 
@@ -2027,7 +2027,7 @@ public static String s2 = "hellowrold2";                                  // 在
 
 虚拟机会保证一个类的()方法在多线程环境中被正确地加锁、同步，如果多个线程同时去初始化一个类，那么只会有一个线程去执行这个类的&lt;clinit&gt;()方法，其他线程都需要阻塞等待，直到活动线程执行&lt;clinit&gt;()方法完毕。
 
-正是因为$\color{red}{函数<clinit>()带锁线程安全的}$，因此，如果在一个类的&lt;clinit&gt;()方法中有耗时很长的操作，就可能造成多个线程阻塞，引发死锁。并且这种死锁是很难发现的，因为看起来它们并没有可用的锁信息。
+正是因为$\color{red}{函数`<clinit>()`带锁线程安全的}$，因此，如果在一个类的&lt;clinit&gt;()方法中有耗时很长的操作，就可能造成多个线程阻塞，引发死锁。并且这种死锁是很难发现的，因为看起来它们并没有可用的锁信息。
 
 如果之前的线程成功加载了类，则等在队列中的线程就没有机会再执行&lt;clinit&gt;()方法了。那么，当需要使用这个类时，虚拟机会直接返回给它已经准备好的信息。
 
@@ -2130,7 +2130,7 @@ Class 只有在必须要首次使用的时候才会被装载，Java 虚拟机不
 
    > VM 启动的时候通过引导类加载器加载一个初始类。这个类在调用 public static void main(String[])方法之前被链接和初始化。这个方法的执行将依次导致所需的类的加载，链接和初始化。
 
-8. <mark>MethodHandle<mark>：当初次调用 MethodHandle 实例时，初始化该 MethodHandle 指向的方法所在的类。（涉及解析 REF getStatic、REF_putStatic、REF invokeStatic 方法句柄对应的类）
+8. <mark>MethodHandle</mark>：当初次调用 MethodHandle 实例时，初始化该 MethodHandle 指向的方法所在的类。（涉及解析 REF getStatic、REF_putStatic、REF invokeStatic 方法句柄对应的类）
 
 **被动使用**
 

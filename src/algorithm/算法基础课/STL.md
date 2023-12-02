@@ -6,8 +6,6 @@
   - `memset(h, -1, sizeof h)` 每个位置都
 - 
 
-
-
 ## Algorithm
 
 ### unique
@@ -115,7 +113,7 @@ for (auto num : v) num;
 
 
 
-## pair<int,int>
+## `pair<int,int>`
 
 存储一个二元组。
 
@@ -125,7 +123,7 @@ for (auto num : v) num;
 
 ```cpp
 // 两种初始化方式：
-pair <int,string> p;
+`pair <int,string> p;`
 
 // 1. p = make_pair(10,"abc");
 // 2. p = {10,"abc");
@@ -169,7 +167,7 @@ pair <int,string> p;
 
 **Ps:**
 
-- 队列没有`clear()`函数，清空 q = queue<int> ();
+- 队列没有`clear()`函数，清空 `q = queue<int> ()`;
 
 ## priority_queue
 
@@ -242,7 +240,7 @@ pair <int,string> p;
 
 ### set/multiset
 
-> ​    c++语言中，multiset是<set>库中一个非常有用的类型，它可以看成一个序列，**插入一个数，删除一个数都能够在O(logn)的时间**内完成，而且他**能时刻保证序列中的数是有序的**，而且序列中可以存在重复的数。
+> ​    c++语言中，multiset是`<set>`库中一个非常有用的类型，它可以看成一个序列，**插入一个数，删除一个数都能够在O(logn)的时间**内完成，而且他**能时刻保证序列中的数是有序的**，而且序列中可以存在重复的数。
 
 `insert()`
 

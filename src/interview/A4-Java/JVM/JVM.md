@@ -18,8 +18,6 @@
 
 
 
-
-
 # JVM的组成部分
 
 ## 简图
@@ -354,7 +352,7 @@ MinorGC的过程(复制->清空->互换)
 幸存者1区。
 5.如果再次经历垃圾回收，此时会重新放回幸存者0区，接着再去幸存者1区。
 6，啥时候能去养老区呢？可以设置次数。默认是15次。
-可以设置参数：-XX：MaxTenuringThreshold=<N>设置对象晋升老年代的年龄阈值
+可以设置参数：`-XX：MaxTenuringThreshold=<N>`设置对象晋升老年代的年龄阈值
 I
 7.在养老区，相对悠闲。当养老区内存不足时，再次触发GC：MajorGC，进行养老区的内存
 清理。
@@ -482,7 +480,7 @@ Memory overflow)。
   - ![image-20200226112846021](.JVM.assets\image-20200226112846021.png)
 - 标记压缩
   - 老年代一般是有整理清除或者整理清除与标记整理的混合实心球。
-  - ![image-20200226113302946](D:\Users\Desktop\image-20200226113302946.png)
+  - ![image-20200226113302946](.JVM.assets\image-20200226113302946.png)
   - 理论上最好的办法，但是耗时。
   - GC运行时，程序会暂停。
   - 
@@ -624,7 +622,7 @@ Object obj = new Object();
 
 使用 SoftReference 类来创建软引用。
 
-```
+```java
 Object obj = new Object();
 SoftReference<Object> sf = new SoftReference<Object>(obj);
 obj = null;  // 使对象只被软引用关联
@@ -636,7 +634,7 @@ obj = null;  // 使对象只被软引用关联
 
 使用 WeakReference 类来创建弱引用。
 
-```
+```java
 Object obj = new Object();
 WeakReference<Object> wf = new WeakReference<Object>(obj);
 obj = null;
@@ -650,7 +648,7 @@ obj = null;
 
 使用 PhantomReference 来创建虚引用。
 
-```
+```java
 Object obj = new Object();
 PhantomReference<Object> pf = new PhantomReference<Object>(obj, null);
 obj = null;
@@ -985,11 +983,11 @@ public static final int value = 123;
 
 ### 5. 初始化
 
-初始化阶段才真正开始执行类中定义的 Java 程序代码。初始化阶段是虚拟机执行类构造器 <clinit>() 方法的过程。在准备阶段，类变量已经赋过一次系统要求的初始值，而在初始化阶段，根据程序员通过程序制定的主观计划去初始化类变量和其它资源。
+初始化阶段才真正开始执行类中定义的 Java 程序代码。初始化阶段是虚拟机执行类构造器 `<clinit>()` 方法的过程。在准备阶段，类变量已经赋过一次系统要求的初始值，而在初始化阶段，根据程序员通过程序制定的主观计划去初始化类变量和其它资源。
 
-<clinit>() 是由编译器自动收集类中所有类变量的赋值动作和静态语句块中的语句合并产生的，编译器收集的顺序由语句在源文件中出现的顺序决定。特别注意的是，**静态语句块只能访问到定义在它之前的类变量，定义在它之后的类变量只能赋值，不能访问。**例如以下代码：
+`<clinit>()` 是由编译器自动收集类中所有类变量的赋值动作和静态语句块中的语句合并产生的，编译器收集的顺序由语句在源文件中出现的顺序决定。特别注意的是，**静态语句块只能访问到定义在它之前的类变量，定义在它之后的类变量只能赋值，不能访问。**例如以下代码：
 
-```
+```java
 public class Test {
     static {
         i = 0;                // 给变量赋值可以正常编译通过
@@ -999,9 +997,9 @@ public class Test {
 }
 ```
 
-由于父类的 <clinit>() 方法先执行，也就意味着**父类中定义的静态语句块的执行要优先于子类**。例如以下代码：
+由于父类的 `<clinit>()`方法先执行，也就意味着**父类中定义的静态语句块的执行要优先于子类**。例如以下代码：
 
-```
+```java 
 static class Parent {
     public static int A = 1;
     static {
@@ -1018,9 +1016,9 @@ public static void main(String[] args) {
 }
 ```
 
-接口中不可以使用静态语句块，但仍然有类变量初始化的赋值操作，因此接口与类一样都会生成 <clinit>() 方法。但接口与类不同的是，执行接口的 <clinit>() 方法不需要先执行父接口的 <clinit>() 方法。只有当父接口中定义的变量使用时，父接口才会初始化。另外，接口的实现类在初始化时也一样不会执行接口的 <clinit>() 方法。
+接口中不可以使用静态语句块，但仍然有类变量初始化的赋值操作，因此接口与类一样都会生成 `<clinit>()` 方法。但接口与类不同的是，执行接口的 `<clinit>()` 方法不需要先执行父接口的 `<clinit>()` 方法。只有当父接口中定义的变量使用时，父接口才会初始化。另外，接口的实现类在初始化时也一样不会执行接口的 `<clinit>()` 方法。
 
-虚拟机会保证一个类的 <clinit>() 方法在**多线程环境下被正确的加锁和同步**，如果多个线程同时初始化一个类，只会有一个线程执行这个类的 <clinit>() 方法，其它线程都会阻塞等待，直到活动线程执行 <clinit>() 方法完毕。如果在一个类的 <clinit>() 方法中有耗时的操作，就可能造成多个线程阻塞，在实际过程中此种阻塞很隐蔽。
+虚拟机会保证一个类的 `<clinit>()` 方法在**多线程环境下被正确的加锁和同步**，如果多个线程同时初始化一个类，只会有一个线程执行这个类的 `<clinit>()` 方法，其它线程都会阻塞等待，直到活动线程执行 `<clinit>()` 方法完毕。如果在一个类的 `<clinit>()` 方法中有耗时的操作，就可能造成多个线程阻塞，在实际过程中此种阻塞很隐蔽。
 
 ## 类初始化时机
 
@@ -1071,8 +1069,8 @@ System.out.println(ConstClass.HELLOWORLD);
 
 从 Java 开发人员的角度看，类加载器可以划分得更细致一些：
 
-- 启动类加载器（Bootstrap ClassLoader）此类加载器负责将存放在 <JRE_HOME>\lib 目录中的，或者被 -Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt.jar，名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。启动类加载器无法被 Java 程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给启动类加载器，直接使用 null 代替即可。
-- 扩展类加载器（Extension ClassLoader）这个类加载器是由 ExtClassLoader（sun.misc.Launcher$ExtClassLoader）实现的。它负责将 <JAVA_HOME>/lib/ext 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中，开发者可以直接使用扩展类加载器。
+- 启动类加载器（Bootstrap ClassLoader）此类加载器负责将存放在 `<JRE_HOME>\lib` 目录中的，或者被 -Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt.jar，名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。启动类加载器无法被 Java 程序直接引用，用户在编写自定义类加载器时，如果需要把加载请求委派给启动类加载器，直接使用 null 代替即可。
+- 扩展类加载器（Extension ClassLoader）这个类加载器是由 ExtClassLoader（sun.misc.Launcher$ExtClassLoader）实现的。它负责将 `<JAVA_HOME>/lib/ext` 或者被 `java.ext.dir` 系统变量所指定路径中的所有类库加载到内存中，开发者可以直接使用扩展类加载器。
 - 应用程序类加载器（Application ClassLoader）这个类加载器是由 AppClassLoader（sun.misc.Launcher$AppClassLoader）实现的。由于这个类加载器是 ClassLoader 中的 getSystemClassLoader() 方法的返回值，因此一般称为系统类加载器。它负责加载用户类路径（ClassPath）上所指定的类库，开发者可以直接使用这个类加载器，如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。
 
 ## 双亲委派模型
@@ -1151,7 +1149,7 @@ public abstract class ClassLoader {
 
 java.lang.ClassLoader 的 loadClass() 实现了双亲委派模型的逻辑，自定义类加载器一般不去重写它，但是需要重写 findClass() 方法。
 
-```
+```java
 public class FileSystemClassLoader extends ClassLoader {
 
     private String rootDir;

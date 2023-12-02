@@ -125,7 +125,6 @@
 - `Sync`、`NonfairSync`、`FairSync`都是`ReentrantLock`的内部类。
 - `NonfairSync`、`FairSync`都继承`Sync`。
 
-![image-20200314113919387](D:\Users\Desktop\image-20200314113919387.png)
 
 <center>UML图</center>
 
@@ -378,7 +377,7 @@ public static void main(String[] args) {
 
 输出结果：
 
-![image-20200314174849867](D:\Users\Desktop\文本\A-面试准备\ReentrantLock中的lockInterruptibly和lock.assets\image-20200314174849867.png)
+![image-20200314174849867](.ReentrantLock中的lockInterruptibly和lock.assets\image-20200314174849867.png)
 
 <center>lockInterruptibly()方法优先相应中断</center>
 
@@ -386,7 +385,7 @@ public static void main(String[] args) {
 
 如果在上边的例子中`debug`，会发现thread线程在`acquireInterruptibly()`抛出异常处。
 
-![image-20200314174837868](D:\Users\Desktop\文本\A-面试准备\ReentrantLock中的lockInterruptibly和lock.assets\image-20200314174837868.png)
+![image-20200314174837868](.ReentrantLock中的lockInterruptibly和lock.assets\image-20200314174837868.png)
 
 
 
@@ -412,7 +411,7 @@ public static void main(String[] args) throws InterruptedException {
 
 输出结果：
 
-![image-20200314175824875](D:\Users\Desktop\文本\A-面试准备\ReentrantLock中的lockInterruptibly和lock.assets\image-20200314175824875.png)
+![image-20200314175824875](.ReentrantLock中的lockInterruptibly和lock.assets\image-20200314175824875.png)
 
 <center>lock()方法不相应中断(会一直卡着)</center>
 

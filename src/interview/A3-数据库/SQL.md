@@ -1314,7 +1314,7 @@ MVCC 提供了时点（point in time）一致性视图。MVCC 并发控制下的
 
 slave会从master读取binlog来进行数据同步。
 
-<img src="SQL.assets\image-20200308171911959.png" alt="image-20200308171911959" style="zoom:150%;" />
+![image-20200308171911959](.SQL.assets\image-20200308171911959.png)
 
 
 

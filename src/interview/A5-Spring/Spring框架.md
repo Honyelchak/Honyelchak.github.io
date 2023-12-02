@@ -220,15 +220,15 @@
 
 1. 只有键的结构:
 
-   1. 数组字段: ``标签表示集合,``标签表示集合内的成员.
-   2. List字段: ``标签表示集合,``标签表示集合内的成员.
-   3. Set字段: ``标签表示集合,``标签表示集合内的成员.
+   1. 数组字段: `标签表示集合,`标签表示集合内的成员.
+   2. List字段: `标签表示集合,`标签表示集合内的成员.
+   3. Set字段: `标签表示集合,`标签表示集合内的成员.
 
 2. 键值对的结构:
 
-   1. Map字段: `map>标签表示集合,<entry>标签表示集合内的键值对,其key属性表示键,value属性表示值.
-   2. Properties字段: <props>标签表示集合,<prop>标签表示键值对,其key属性表示键,标签内的内容表示值.
-      其中<map>,<props>标签之间,<entry>,<prop>标签之间可以互相替换使用.
+   1. Map字段: map标签表示集合,`<entry>`标签表示集合内的键值对,其key属性表示键,value属性表示值.
+   2. Properties字段: `<props>`标签表示集合,`<prop>`标签表示键值对,其key属性表示键,标签内的内容表示值.
+      其中`<map>,<props>`标签之间,`<entry>,<prop>`标签之间可以互相替换使用.
    
     
 
@@ -559,7 +559,7 @@ public class BeanFactory {
 
 5. 使用`<aop:xxx>`标签配置对应类型的通知方法
 
-![image-20200225230818217](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225230818217.png)
+![image-20200225230818217](.Spring框架.assets\image-20200225230818217.png)
 
 ```xml
 <aop:config>
@@ -587,23 +587,23 @@ public class BeanFactory {
 
 
 
-![image-20200225230949579](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225230949579.png)
+![image-20200225230949579](.Spring框架.assets\image-20200225230949579.png)
 
 
 
 
 
-![image-20200225231012980](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225231012980.png)
+![image-20200225231012980](.Spring框架.assets\image-20200225231012980.png)
 
 
 
-![image-20200225231029959](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225231029959.png)
+![image-20200225231029959](.Spring框架.assets\image-20200225231029959.png)
 
-![image-20200225231041448](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225231041448.png)
+![image-20200225231041448](.Spring框架.assets\image-20200225231041448.png)
 
-![image-20200225231053770](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225231053770.png)
+![image-20200225231053770](.Spring框架.assets\image-20200225231053770.png)
 
-![image-20200225231116049](D:\Users\Desktop\文本\A-面试准备\Spring框架.assets\image-20200225231116049.png)
+![image-20200225231116049](.Spring框架.assets\image-20200225231116049.png)
 
 
 

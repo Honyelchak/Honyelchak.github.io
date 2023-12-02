@@ -7,7 +7,7 @@
 - 新项目上线，对各种 JVM 参数设置一脸茫然，直接默认吧然后就 JJ 了
 - 每次面试之前都要重新背一遍 JVM 的一些原理概念性的东西，然而面试官却经常问你在实际项目中如何调优 VM 参数，如何解决 GC、OOM 等问题，一脸懵逼
 
-<img src=".JVM上.assets/4f09fe3576573558bdc61985a8ad6a42.png" alt="image-20200704111417472" style="zoom:67%;" />
+![image-20200704111417472](.JVM上.assets/4f09fe3576573558bdc61985a8ad6a42.png)
 
 大部分 Java 开发人员，除会在项目中使用到与 Java 平台相关的各种高精尖技术，对于 Java 技术的核心 Java 虚拟机了解甚少。
 
@@ -17,7 +17,7 @@
 
 如果我们把核心类库的 API 比做数学公式的话，那么 Java 虚拟机的知识就好比公式的推导过程。
 
-<img src=".JVM上.assets/b8b64926837d355213a8ce16c119da6b.png" alt="image-20200704112119729" style="zoom:80%;" />
+![image-20200704112119729](.JVM上.assets/b8b64926837d355213a8ce16c119da6b.png)
 
 计算机系统体系对我们来说越来越远，在不了解底层实现方式的前提下，通过高级语言很容易编写程序代码。但事实上计算机并不认识高级语言
 
@@ -37,13 +37,13 @@
 
 ## 1.2. 面向人群及参考书目
 
-<img src=".JVM上.assets/555790a8a0b57075bdc8b6116545e461.png" alt="image-20210507095948516" style="zoom: 50%;" />
+![image-20210507095948516](.JVM上.assets/555790a8a0b57075bdc8b6116545e461.png)
 
-<img src=".JVM上.assets/33c00a1933a8fbdf47db211178125621.png" alt="image-20200704145340513" style="zoom:50%;" />
+![image-20200704145340513](.JVM上.assets/33c00a1933a8fbdf47db211178125621.png)
 
 <img src="https://img-blog.csdnimg.cn/img_convert/f4cd25ee025347ae9481e26b89331041.png" alt="image-20210507100021400" style="zoom:50%;" />
 
-<img src=".JVM上.assets/c56a02961383aca01f642eb9a1b81ab1.png" alt="image-20210507100104455" style="zoom:50%;" />
+![image-20210507100104455](.JVM上.assets/c56a02961383aca01f642eb9a1b81ab1.png)
 
 ## 1.3. Java 及 JVM 简介
 
@@ -78,11 +78,11 @@ Java 是目前应用最为广泛的软件开发平台之一。随着 Java 以及
   - 就连 JDK 和 JVM 自身也有不少开源的实现，如 openJDK、Harmony。
 - 作为一个社区，Java 拥有全世界最多的技术拥护者和开源社区支持，有数不清的论坛和资料。从桌面应用软件、嵌入式开发到企业级应用、后台服务器、中间件，都可以看到 Java 的身影。其应用形式之复杂、参与人数之众多也令人咋舌。
 
-<img src=".JVM上.assets/69fa9f3a1421d7dffc8b193084c8ae04.png" alt="image-20200704151731216" style="zoom:67%;" />
+![image-20200704151731216](.JVM上.assets/69fa9f3a1421d7dffc8b193084c8ae04.png)
 
 每个语言都需要转换成字节码文件，最后转换的字节码文件都能通过 Java 虚拟机进行运行和处理
 
-<img src=".JVM上.assets/a9546b59e32abb4cc36b02b2f72bddad.png" alt="image-20200704152052489" style="zoom:67%;" />
+![image-20200704152052489](.JVM上.assets/a9546b59e32abb4cc36b02b2f72bddad.png)
 
 - 随着 Java7 的正式发布，Java 虚拟机的设计者们通过 JSR-292 规范基本实现在<mark>Java 虚拟机平台上运行非 Java 语言编写的程序。</mark>
 - Java 虚拟机根本不关心运行在其内部的程序到底是使用何种编程语言编写的，<mark>它只关心“字节码”文件</mark>。也就是说 Java 虚拟机拥有语言无关性，并不会单纯地与 Java 语言“终身绑定”，只要其他编程语言的编译结果满足并包含 Java 虚拟机的内部指令集、符号表以及其他的辅助信息，它就是一个有效的字节码文件，就能够被虚拟机所识别并装载运行。
@@ -756,7 +756,7 @@ Java 程序对类的使用方式分为：主动使用和被动使用。
 
 本节主要讲的是运行时数据区，也就是下图这部分，它是在类加载完成后的阶段
 
-<img src=".JVM上.assets/b5d91ce04cfef9a681bbed216732511a.png" alt="image-20200705111640511" style="zoom:80%;" />
+![image-20200705111640511](.JVM上.assets/b5d91ce04cfef9a681bbed216732511a.png)
 
 当我们通过前面的：`类的加载-> 验证 -> 准备 -> 解析 -> 初始化` 这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区。
 
@@ -764,7 +764,7 @@ Java 程序对类的使用方式分为：主动使用和被动使用。
 
 内存是非常重要的系统资源，是硬盘和 CPU 的中间仓库及桥梁，承载着操作系统和应用程序的实时运行，JVM 内存布局规定了 Java 在运行过程中内存申请、分配、管理的策略，保证了 JVM 的高效稳定运行。不同的 JVM 对于内存的划分方式和管理机制存在着部分差异。结合 JVM 虚拟机规范，来探讨一下经典的 JVM 内存布局。
 
-<img src=".JVM上.assets/d6f0aac226ebab0c435b8fe79995eddc.png" alt="image-20210509174724223" style="zoom:80%;" />
+![image-20210509174724223](.JVM上.assets/d6f0aac226ebab0c435b8fe79995eddc.png)
 
 我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于执行引擎，将通过准备的东西进行制作成精美的菜品
 
@@ -1355,7 +1355,7 @@ class Son extends Father {
 
 举例 1：
 
-<img src=".JVM上.assets/79470fa420092e07a411e4e849f743b8.png" alt="image-20200706144954070" style="zoom: 80%;" />
+![image-20200706144954070](.JVM上.assets/79470fa420092e07a411e4e849f743b8.png)
 
 举例 2：
 
@@ -1527,7 +1527,7 @@ JVM 支持着 Java 语言本身和运行时库，它是 Java 程序赖以生存�
 
 它的具体做法是 Native Method Stack 中登记 native 方法，在 Execution Engine 执行时加载本地方法库。
 
-<img src=".JVM上.assets/b4aea15cec874411f749e336c8b5d8fd.png" alt="image-20200706174708418" style="zoom:80%;" />
+![image-20200706174708418](.JVM上.assets/b4aea15cec874411f749e336c8b5d8fd.png)
 
 <mark>当某个线程调用一个本地方法时，它就进入了一个全新的并且不再受虚拟机限制的世界。它和虚拟机拥有同样的权限。</mark>
 
@@ -1547,7 +1547,7 @@ JVM 支持着 Java 语言本身和运行时库，它是 Java 程序赖以生存�
 
 堆针对一个 JVM 进程来说是唯一的，也就是一个进程只有一个 JVM，但是进程包含多个线程，他们是共享同一堆空间的。
 
-<img src=".JVM上.assets/0be60cad417bedd46d651f710ae585ce.png" alt="image-20200706195127740" style="zoom:80%;" />
+![image-20200706195127740](.JVM上.assets/0be60cad417bedd46d651f710ae585ce.png)
 
 一个 JVM 实例只存在一个堆内存，堆也是 Java 内存管理的核心区域。
 
@@ -1588,11 +1588,11 @@ Java 8 及之后堆内存逻辑上分为三部分：新生区+养老区+<mark>�
 
 ### 6.1.2. 堆空间内部结构（JDK7）
 
-<img src=".JVM上.assets/deafdcce7cf88a496bc231820bb5b007.png" alt="image-20200706203419496" style="zoom:67%;" />
+![image-20200706203419496](.JVM上.assets/deafdcce7cf88a496bc231820bb5b007.png)
 
 ### 6.1.3. 堆空间内部结构（JDK8）
 
-<img src=".JVM上.assets/ee2836af2e1d5387b4ac58f5eacabbb6.png" alt="image-20200706203835403" style="zoom:67%;" />
+![image-20200706203835403](.JVM上.assets/ee2836af2e1d5387b4ac58f5eacabbb6.png)
 
 ## 6.2. 设置堆内存大小与 OOM
 
@@ -2696,7 +2696,7 @@ Java 虚拟机被允许对满足上述三个条件的无用类进行回收，这
 - 偏向线程 ID
 - 偏向时间戳
 
-<img src=".JVM上.assets/image-20230914091143868.png" alt="image-20230914091143868" style="zoom:80%;" />
+![image-20230914091143868](.JVM上.assets/image-20230914091143868.png)
 
 ![](.JVM上.assets/图像.png)
 
@@ -2713,9 +2713,9 @@ Java 虚拟机被允许对满足上述三个条件的无用类进行回收，这
 > 1. 开启之后，8(markword) + 4(类型指针) + 4(对齐填充)
 > 2. 未开启，8(markword) + 8(类型指针)
 >
-> <img src=".JVM上.assets/image-20230914094926957.png" alt="image-20230914094926957" style="zoom:80%;" />
+> ![image-20230914094926957](.JVM上.assets/image-20230914094926957.png)
 >
-> <img src=".JVM上.assets/image-20230917171924677.png" alt="image-20230917171924677" style="zoom:80%;" />
+> ![image-20230917171924677](.JVM上.assets/image-20230917171924677.png)
 
 ### 8.2.2. 实例数据（Instance Data）
 
