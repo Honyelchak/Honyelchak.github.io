@@ -31,7 +31,7 @@ export default hopeTheme({
   // sidebar
   sidebar,
 
-  footer: '<div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006321" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://122.51.214.59/wp-content/uploads/2022/11/备案图标.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#fff;">鄂公网安备 42018502006321号</p></a></div>',
+  footer: '<div style="width:300px;margin:0 auto; padding:20px 0;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42018502006321" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://122.51.214.59/wp-content/uploads/2022/11/备案图标.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px;">鄂公网安备 42018502006321号</p></a></div>',
 
   displayFooter: true,
 
